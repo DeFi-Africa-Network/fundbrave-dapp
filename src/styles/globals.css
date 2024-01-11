@@ -1,0 +1,8 @@
+@import url("./tailwind.css");
+
+.auth-banner {
+  background-image: url(/images/auth-banner.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
