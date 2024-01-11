@@ -13,6 +13,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -84,13 +90,22 @@ const CampaignCard: FC<CampaignCardProps> = ({ index }) => {
       <CardFooter className="w-full flex-col items-start gap-y-3">
         <div className="text-sm text-muted-foreground">
           <p>
-            <b className="text-white">Target:</b> 10 Eth
+            <b className="text-white">Target:</b> 10 ETH
           </p>
           <p>
             <b className="text-white">Deadline:</b> 12 Dec, 2024
           </p>
         </div>
-        <Progress value={33} />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Progress value={33} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>3 ETH raised</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </CardFooter>
     </Card>
   );
