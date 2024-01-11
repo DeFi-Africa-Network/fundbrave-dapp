@@ -5,7 +5,7 @@ const navigation = [
   },
   {
     label: "My Contributions",
-    path: "/my-contributions",
+    path: "/dashboard/my-contributions",
   },
 ];
 

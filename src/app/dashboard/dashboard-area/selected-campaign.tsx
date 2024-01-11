@@ -74,7 +74,7 @@ const SelectCampaign = () => {
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="0" {...field} />
                   </FormControl>
                   <FormDescription>
                     This is the amount you want to contribute.
