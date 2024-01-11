@@ -1,5 +1,6 @@
 // components
 import CampaignCard from "./campaign-card";
+import SelectCampaign from "./selected-campaign";
 
 const DashboardArea = () => {
   return (
@@ -9,7 +10,9 @@ const DashboardArea = () => {
           <CampaignCard key={index} index={index} />
         ))}
       </div>
-      <div className="col-span-1"></div>
+      <div className="col-span-1">
+        <SelectCampaign />
+      </div>
     </div>
   );
 };
