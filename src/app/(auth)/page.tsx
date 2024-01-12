@@ -1,16 +1,30 @@
 "use client";
 
 // react
-import { useState } from "react";
-
-// ui components
-import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+// next
+import { useRouter } from "next/navigation";
+// imports
+import { useAccount, useNetwork } from "wagmi";
 
 // shared components
-import { Icons } from "@/components/shared";
+import { CustomConnectButton } from "@/components/shared";
 
 export default function Auth() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // router hooks
+  const { replace } = useRouter();
+
+  // wagmi hooks
+  const { isConnected } = useAccount();
+  const { chain } = useNetwork();
+
+  // effects
+  useEffect(() => {
+    // redirect to dashboard if connected and right network
+    if (isConnected && Boolean(chain && !chain.unsupported)) {
+      replace("/dashboard");
+    }
+  }, [isConnected]);
 
   return (
     <div className="container min-h-svh flex flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -34,8 +48,8 @@ export default function Auth() {
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg">
-              "Navigating Dreams into Reality" - Empowering
-              Innovations through Community Support.
+              "Navigating Dreams into Reality" - Empowering Innovations through
+              Community Support.
             </p>
             <footer className="text-sm">Defi Africa</footer>
           </blockquote>
@@ -51,14 +65,9 @@ export default function Auth() {
               To start a project or support a project.
             </p>
           </div>
-          <Button disabled={isLoading}>
-            {isLoading && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
-            Connect Wallet
-          </Button>
+          <CustomConnectButton className="w-full" />
           <p className="px-8 text-center text-sm text-muted-foreground">
-            By clicking continue, you agree to our terms of use.
+            By connecting your wallet, you agree to our terms of use.
           </p>
         </div>
       </div>

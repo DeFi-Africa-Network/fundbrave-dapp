@@ -1,7 +1,10 @@
+"use client";
+
+// imports
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 // components
-import { Search } from "./search";
 import { MainNav } from "./main-nav";
-import TeamSwitcher from "./team-switcher";
 
 const Navigation = () => {
   return (
@@ -9,8 +12,7 @@ const Navigation = () => {
       <div className="container flex h-16 items-center px-4">
         <MainNav className="mx-6" />
         <div className="ml-auto flex items-center space-x-4">
-          <Search />
-          {/* <UserNav /> */}
+          <ConnectButton />
         </div>
       </div>
     </div>
